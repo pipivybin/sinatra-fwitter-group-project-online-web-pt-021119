@@ -9,6 +9,7 @@ class ApplicationController < Sinatra::Base
     set :session_secret, "whitewalker"
   end
 
+  helpers do
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id].present?
   end
@@ -16,5 +17,6 @@ class ApplicationController < Sinatra::Base
   def logged_in?
     !!current_user
   end
+end
 
 end
